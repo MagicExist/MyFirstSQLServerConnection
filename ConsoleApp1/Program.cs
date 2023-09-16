@@ -51,7 +51,7 @@ namespace ConsoleApp1
 
             foreach (Personas personas in registro) 
             {
-                Console.WriteLine(personas.Nombre);
+                Console.WriteLine($"{personas.Id} | {personas.Nombre} | {personas.Apellido} | {personas.Carrera}");
             }
 
         }
