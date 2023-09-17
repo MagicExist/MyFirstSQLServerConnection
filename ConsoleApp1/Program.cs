@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using System.Text;
 namespace ConsoleApp1
 {
     internal class Program
@@ -71,10 +72,29 @@ namespace ConsoleApp1
             var registro = Get();
 
         }
+        enum menuOption 
+        {
+            INSERTAR = 1,
+            GETALL = 2,
+        }
         static void Main(string[] args)
             {
+            string Nombre = "";
+            string Apellido = "";
+            string Carrera = "";
+            int optc = 0;
+            StringBuilder sb = new StringBuilder();
+            sb.Append("1.Insertar Datos" +
+                      "\n2.Obtener Todos los Datos" +
+                      "\n  Select:");
+           
 
-            Add("Pedro", "Montoya", "Tecnologia en software");
+            while (optc != -1) 
+            {
+                Console.Write(sb.ToString());
+            }
+
+
 
         }
     }
