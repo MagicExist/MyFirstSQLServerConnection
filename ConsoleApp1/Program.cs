@@ -91,12 +91,14 @@ namespace ConsoleApp1
 
             while (optc != -1) 
             {
+                Console.Clear();
                 Console.Write(sb.ToString());
                 if (int.TryParse(Console.ReadLine(), out optc))
                 {
                     switch ((menuOption)optc) 
                     {
                         case menuOption.INSERTAR:
+                            Console.Clear();
                             Console.Write("Ingrese Nombre:");
                             Nombre = Console.ReadLine();
                             Console.Write("Ingrese Apellido:");
@@ -112,6 +114,7 @@ namespace ConsoleApp1
                                 Console.WriteLine($"No se pudo insertar los datos:{ex.Message}");
                                 Console.ReadKey();
                         case menuOption.GETALL:
+                            Console.Clear();
                             List<Personas> list = new List<Personas>();
                             try
                             {
