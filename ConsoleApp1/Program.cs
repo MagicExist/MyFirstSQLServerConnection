@@ -111,6 +111,24 @@ namespace ConsoleApp1
                             {
                                 Console.WriteLine($"No se pudo insertar los datos:{ex.Message}");
                                 Console.ReadKey();
+                        case menuOption.GETALL:
+                            List<Personas> list = new List<Personas>();
+                            try
+                            {
+                                list = Get();
+                            }
+                            catch(Exception ex) 
+                            {
+                                Console.WriteLine($"No se pudo obtener los datos:{ex.Message}");
+                                Console.ReadKey();
+                                return;
+                            }
+                            foreach (Personas p in list) 
+                            {
+                                Console.WriteLine($"{p.Id} - {p.Nombre} - {p.Apellido} - {p.Carrera}");
+                            } 
+                            Console.ReadKey();
+                            break;
                             }
                     }
                 else 
