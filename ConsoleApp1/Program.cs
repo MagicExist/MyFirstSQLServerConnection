@@ -92,6 +92,34 @@ namespace ConsoleApp1
             while (optc != -1) 
             {
                 Console.Write(sb.ToString());
+                if (int.TryParse(Console.ReadLine(), out optc))
+                {
+                    switch ((menuOption)optc) 
+                    {
+                        case menuOption.INSERTAR:
+                            Console.Write("Ingrese Nombre:");
+                            Nombre = Console.ReadLine();
+                            Console.Write("Ingrese Apellido:");
+                            Apellido = Console.ReadLine();
+                            Console.Write("Ingrese Carrera:");
+                            Carrera = Console.ReadLine();
+                            try
+                            {
+                                Add(Nombre, Apellido, Carrera);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"No se pudo insertar los datos:{ex.Message}");
+                                Console.ReadKey();
+                            }
+                    }
+                else 
+                {
+                    Console.WriteLine("Error:Indice erroneo");
+                    Console.ReadKey();
+
+                }
+
             }
 
 
