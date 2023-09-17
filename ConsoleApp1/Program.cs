@@ -43,17 +43,40 @@ namespace ConsoleApp1
                 return list;
         }
 
-        static void Main(string[] args)
+        public static void Add(string Nombre,string Apellido,string Carrera) 
         {
             
+            string connectionString = @"Data Source=JOHHAN\SQLEXPRESS;Initial Catalog=PERSONAS;User=sa;Password=12345678;TrustServerCertificate = True";
+            string query = "INSERT INTO ESTUDIANTES(NOMBRE,APELLIDO,CARRERA)" +
+                " VALUES (@NOMBRE,@APELLIDO,@CARRERA)";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@NOMBRE",Nombre);
+                cmd.Parameters.AddWithValue("@APELLIDO", Apellido);
+                cmd.Parameters.AddWithValue("@CARRERA", Carrera);
+                try
+                {
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
             
             var registro = Get();
 
-            foreach (Personas personas in registro) 
+        }
+        static void Main(string[] args)
             {
-                Console.WriteLine($"{personas.Id} | {personas.Nombre} | {personas.Apellido} | {personas.Carrera}");
-            }
+
+            Add("Pedro", "Montoya", "Tecnologia en software");
 
         }
     }
+    
 }
