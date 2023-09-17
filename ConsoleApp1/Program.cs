@@ -113,6 +113,10 @@ namespace ConsoleApp1
                             {
                                 Console.WriteLine($"No se pudo insertar los datos:{ex.Message}");
                                 Console.ReadKey();
+                                return;
+                            }
+
+                            break;
                         case menuOption.GETALL:
                             Console.Clear();
                             List<Personas> list = new List<Personas>();
