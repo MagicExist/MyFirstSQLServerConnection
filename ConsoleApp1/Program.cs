@@ -171,7 +171,7 @@ namespace ConsoleApp1
                             List<Personas> list = new List<Personas>();
                             try
                             {
-                                list = Get();
+                                list = GetDB.Get(db,"ESTUDIANTES");
                             }
                             catch (Exception ex)
                             {
