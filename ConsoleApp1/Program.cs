@@ -98,11 +98,35 @@ namespace ConsoleApp1
             }
 
         }
+        public static void Delete(int Id)
+        {
+
+            string connectionString = @"Data Source=JOHHAN\SQLEXPRESS;Initial Catalog=PERSONAS;User=sa;Password=12345678;TrustServerCertificate = True";
+            string query = "DELETE FROM ESTUDIANTES WHERE ID=@ID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@ID", Id);
+                try
+                {
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+
+        }
         enum menuOption 
         {
             INSERTAR = 1,
             GETALL = 2,
             UPDATE = 3,
+            DELETE = 4,
         }
         static void Main(string[] args)
             {
@@ -115,6 +139,7 @@ namespace ConsoleApp1
             sb.Append("1.Insertar Datos" +
                       "\n2.Obtener Todos los Datos" +
                       "\n3.Actualizar datos" +
+                      "\n4.Eliminar datos" +
                       "\n  Select:");
            
 
@@ -182,6 +207,21 @@ namespace ConsoleApp1
                             catch (Exception ex)
                             {
                                 Console.WriteLine($"No se pudo actualizar los datos:{ex.Message}");
+                                Console.ReadKey();
+                                return;
+                            }
+                            break;
+                        case menuOption.DELETE:
+                            Console.Clear();
+                            Console.Write("Ingrese el Id:");
+                            Id = int.Parse(Console.ReadLine());
+                            try
+                            {
+                                Delete(Id);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"No se pudo eliminar los datos:{ex.Message}");
                                 Console.ReadKey();
                                 return;
                             }
