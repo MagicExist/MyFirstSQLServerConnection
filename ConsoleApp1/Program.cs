@@ -81,6 +81,9 @@ namespace ConsoleApp1
             }
 
         }
+
+        
+
         enum menuOption 
         {
             INSERTAR = 1,
@@ -93,9 +96,41 @@ namespace ConsoleApp1
             string Nombre = "";
             string Apellido = "";
             string Carrera = "";
+            string source = "";
+            string dbName = "";
+            string user = "";
+            string password = "";
             int Id = 0;
             int optc = 0;
+            DbData db = null;
             StringBuilder sb = new StringBuilder();
+
+            while (true)
+            {
+                Console.Clear();
+                Console.Write("Insert db source:");
+                source = Console.ReadLine();
+                Console.Write("\nInsert db name:");
+                dbName = Console.ReadLine();
+                Console.Write("\nInsert user:");
+                user = Console.ReadLine();
+                Console.Write("\nInsert password:");
+                password = Console.ReadLine();
+
+                try 
+                {
+                    db = new DbData(source,dbName,user,password);
+                    TestingDbConnection.TestingDBConnection(db);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"{ex.Message}");
+                    Console.ReadKey();
+                    continue;
+                }
+                break;
+            }
+
             sb.Append("1.Insertar Datos" +
                       "\n2.Obtener Todos los Datos" +
                       "\n3.Actualizar datos" +
