@@ -13,10 +13,10 @@ namespace ConsoleApp1
         private string _user;
         private string _password;
 
-        public string Source { get => _source;}
-        public string DbName { get => _dbName;}
-        public string User { get => _user;}
-        public string Password { get => _password;}
+        public string Source { get => _source; set => _source = value; }
+        public string DbName { get => _dbName; set => _dbName = value; }
+        public string User { get => _user; set => _user = value; }
+        public string Password { get => _password; set => _password = value; }
 
         public DbData(string source,string dbName,string user, string password) 
         {
@@ -24,10 +24,10 @@ namespace ConsoleApp1
             {
                 throw new ArgumentException("The password can't contain more than 128 chars");
             }
-            this._source = source;
-            this._dbName = dbName;
-            this._user = user;
-            this._password = password;
+            this.Source = source;
+            this.DbName = dbName;
+            this.User = user;
+            this.Password = password;
         }
 
         
