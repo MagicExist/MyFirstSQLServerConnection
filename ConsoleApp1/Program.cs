@@ -5,7 +5,7 @@ namespace ConsoleApp1
     internal class Program
     {
 
-        public static List<Personas> Get() 
+        public static List<Personas> Get()
         {
 
             string connectionString = @"Data Source=JOHHAN\SQLEXPRESS;Initial Catalog=PERSONAS;User=sa;Password=12345678;TrustServerCertificate = True";
@@ -15,14 +15,14 @@ namespace ConsoleApp1
 
             string query = "SELECT ID,NOMBRE,APELLIDO,CARRERA FROM ESTUDIANTES";
 
-            using (SqlConnection connection = new SqlConnection(connectionString)) 
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand(query, connection);
-                try 
+                try
                 {
                     connection.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read()) 
+                    while (reader.Read())
                     {
                         Personas oPersona = new Personas();
                         oPersona.Id = reader.GetInt32(0);
@@ -34,19 +34,18 @@ namespace ConsoleApp1
                     reader.Close();
                     connection.Close();
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
                     throw new Exception(ex.Message);
                 }
             }
 
 
-                return list;
+            return list;
         }
-
-        public static void Add(string Nombre,string Apellido,string Carrera) 
+        public static void Add(string Nombre, string Apellido, string Carrera)
         {
-            
+
             string connectionString = @"Data Source=JOHHAN\SQLEXPRESS;Initial Catalog=PERSONAS;User=sa;Password=12345678;TrustServerCertificate = True";
             string query = "INSERT INTO ESTUDIANTES(NOMBRE,APELLIDO,CARRERA)" +
                 " VALUES (@NOMBRE,@APELLIDO,@CARRERA)";
@@ -54,7 +53,7 @@ namespace ConsoleApp1
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@NOMBRE",Nombre);
+                cmd.Parameters.AddWithValue("@NOMBRE", Nombre);
                 cmd.Parameters.AddWithValue("@APELLIDO", Apellido);
                 cmd.Parameters.AddWithValue("@CARRERA", Carrera);
                 try
@@ -68,8 +67,7 @@ namespace ConsoleApp1
                     throw new Exception(ex.Message);
                 }
             }
-            
-            var registro = Get();
+
 
         }
         enum menuOption 
@@ -78,7 +76,7 @@ namespace ConsoleApp1
             GETALL = 2,
         }
         static void Main(string[] args)
-            {
+        {
             string Nombre = "";
             string Apellido = "";
             string Carrera = "";
@@ -95,7 +93,7 @@ namespace ConsoleApp1
                 Console.Write(sb.ToString());
                 if (int.TryParse(Console.ReadLine(), out optc))
                 {
-                    switch ((menuOption)optc) 
+                    switch ((menuOption)optc)
                     {
                         case menuOption.INSERTAR:
                             Console.Clear();
@@ -136,9 +134,9 @@ namespace ConsoleApp1
                             } 
                             Console.ReadKey();
                             break;
-                            }
                     }
-                else 
+                }
+                else
                 {
                     Console.WriteLine("Error:Indice erroneo");
                     Console.ReadKey();
@@ -146,9 +144,9 @@ namespace ConsoleApp1
                 }
 
             }
+            
 
-
-
+           
         }
     }
     
