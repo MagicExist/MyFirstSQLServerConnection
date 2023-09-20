@@ -18,6 +18,8 @@ namespace ConsoleApp1
         public string User { get => _user; set => _user = value; }
         public string Password { get => _password; set => _password = value; }
 
+        public DbData() { }
+
         public DbData(string source,string dbName,string user, string password) 
         {
             if (password.Length > 128) 
