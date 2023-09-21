@@ -4,33 +4,6 @@ namespace ConsoleApp1
 {
     internal class Program
     {
-        public static void Add(string Nombre, string Apellido, string Carrera)
-        {
-
-            string connectionString = @"Data Source=JOHHAN\SQLEXPRESS;Initial Catalog=PERSONAS;User=sa;Password=12345678;TrustServerCertificate = True";
-            string query = "INSERT INTO ESTUDIANTES(NOMBRE,APELLIDO,CARRERA)" +
-                " VALUES (@NOMBRE,@APELLIDO,@CARRERA)";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@NOMBRE", Nombre);
-                cmd.Parameters.AddWithValue("@APELLIDO", Apellido);
-                cmd.Parameters.AddWithValue("@CARRERA", Carrera);
-                try
-                {
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.Message);
-                }
-            }
-
-        }
-
         public static void Update(string Nombre, string Apellido, string Carrera,int Id)
         {
 
