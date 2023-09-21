@@ -129,7 +129,7 @@ namespace ConsoleApp1
                             Carrera = Console.ReadLine();
                             try
                             {
-                                Add(Nombre, Apellido, Carrera);
+                                AddDB.Add(db,"ESTUDIANTES",Nombre, Apellido, Carrera);
                             }
                             catch (Exception ex)
                             {
