@@ -4,32 +4,6 @@ namespace ConsoleApp1
 {
     internal class Program
     {
-        public static void Delete(int Id)
-        {
-
-            string connectionString = @"Data Source=JOHHAN\SQLEXPRESS;Initial Catalog=PERSONAS;User=sa;Password=12345678;TrustServerCertificate = True";
-            string query = "DELETE FROM ESTUDIANTES WHERE ID=@ID";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@ID", Id);
-                try
-                {
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.Message);
-                }
-            }
-
-        }
-
-        
-
         enum menuOption 
         {
             INSERTAR = 1,
