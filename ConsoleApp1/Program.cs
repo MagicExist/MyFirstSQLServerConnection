@@ -143,7 +143,7 @@ namespace ConsoleApp1
                             Id = int.Parse(Console.ReadLine());
                             try
                             {
-                                Update(Nombre, Apellido, Carrera, Id);
+                                UpdateDB.Update(db,"ESTUDIANTES",Nombre, Apellido, Carrera, Id);
                             }
                             catch (Exception ex)
                             {
