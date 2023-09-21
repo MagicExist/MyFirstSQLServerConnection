@@ -132,7 +132,7 @@ namespace ConsoleApp1
                             Id = int.Parse(Console.ReadLine());
                             try
                             {
-                                Delete(Id);
+                                DeleteDB.Delete(db,"ESTUDIANTES",Id);
                             }
                             catch (Exception ex)
                             {
