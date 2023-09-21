@@ -4,33 +4,6 @@ namespace ConsoleApp1
 {
     internal class Program
     {
-        public static void Update(string Nombre, string Apellido, string Carrera,int Id)
-        {
-
-            string connectionString = @"Data Source=JOHHAN\SQLEXPRESS;Initial Catalog=PERSONAS;User=sa;Password=12345678;TrustServerCertificate = True";
-            string query = "UPDATE ESTUDIANTES SET NOMBRE=@NOMBRE,APELLIDO=@APELLIDO" +
-                ",CARRERA=@CARRERA WHERE ID=@ID";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@NOMBRE", Nombre);
-                cmd.Parameters.AddWithValue("@APELLIDO", Apellido);
-                cmd.Parameters.AddWithValue("@CARRERA", Carrera);
-                cmd.Parameters.AddWithValue("@ID", Id);
-                try
-                {
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.Message);
-                }
-            }
-
-        }
         public static void Delete(int Id)
         {
 
