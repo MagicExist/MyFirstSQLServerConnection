@@ -6,7 +6,7 @@ namespace ConsoleApp1
     {
         enum menuOption 
         {
-            INSERTAR = 1,
+            INSERT = 1,
             GETALL = 2,
             UPDATE = 3,
             DELETE = 4,
@@ -66,7 +66,7 @@ namespace ConsoleApp1
                 {
                     switch ((menuOption)optc)
                     {
-                        case menuOption.INSERTAR:
+                        case menuOption.INSERT:
                             Console.Clear();
                             Console.Write("Ingrese Nombre:");
                             Nombre = Console.ReadLine();
