@@ -76,9 +76,11 @@ namespace ConsoleApp1
                             Apellido = Console.ReadLine();
                             Console.Write("Ingrese Carrera:");
                             Carrera = Console.ReadLine();
+                            Console.WriteLine("Ingrese la tabla");
+                            tabla = Console.ReadLine();
                             try
                             {
-                                AddDB.Add(db,"ESTUDIANTES",Nombre, Apellido, Carrera);
+                                AddDB.Add(db,tabla,Nombre, Apellido, Carrera);
                             }
                             catch (Exception ex)
                             {
@@ -91,9 +93,12 @@ namespace ConsoleApp1
                         case menuOption.GETALL:
                             Console.Clear();
                             List<Personas> list = new List<Personas>();
+
+                            Console.WriteLine("Ingrese la tabla");
+                            tabla = Console.ReadLine();
                             try
                             {
-                                list = GetDB.Get(db,"ESTUDIANTES");
+                                list = GetDB.Get(db,tabla);
                             }
                             catch (Exception ex)
                             {
@@ -115,11 +120,13 @@ namespace ConsoleApp1
                             Apellido = Console.ReadLine();
                             Console.Write("Ingrese Carrera:");
                             Carrera = Console.ReadLine();
+                            Console.WriteLine("Ingrese la tabla");
+                            tabla = Console.ReadLine();
                             Console.Write("Ingrese el Id:");
                             Id = int.Parse(Console.ReadLine());
                             try
                             {
-                                UpdateDB.Update(db,"ESTUDIANTES",Nombre, Apellido, Carrera, Id);
+                                UpdateDB.Update(db,tabla,Nombre, Apellido, Carrera, Id);
                             }
                             catch (Exception ex)
                             {
@@ -130,11 +137,13 @@ namespace ConsoleApp1
                             break;
                         case menuOption.DELETE:
                             Console.Clear();
+                            Console.WriteLine("Ingrese la tabla");
+                            tabla = Console.ReadLine();
                             Console.Write("Ingrese el Id:");
                             Id = int.Parse(Console.ReadLine());
                             try
                             {
-                                DeleteDB.Delete(db,"ESTUDIANTES",Id);
+                                DeleteDB.Delete(db,tabla,Id);
                             }
                             catch (Exception ex)
                             {
