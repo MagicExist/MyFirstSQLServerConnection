@@ -10,6 +10,7 @@ namespace ConsoleApp1
             GETALL = 2,
             UPDATE = 3,
             DELETE = 4,
+            EXIT = 5,
         }
         static void Main(string[] args)
         {
@@ -55,6 +56,7 @@ namespace ConsoleApp1
                       "\n2.Obtener Todos los Datos" +
                       "\n3.Actualizar datos" +
                       "\n4.Eliminar datos" +
+                      "\n5.Salir" +
                       "\n  Select:");
            
 
@@ -140,6 +142,9 @@ namespace ConsoleApp1
                                 Console.ReadKey();
                                 return;
                             }
+                            break;
+                        case menuOption.EXIT:
+                            optc = -1;
                             break;
                     }
                     }
